@@ -3,9 +3,13 @@ rsloan environment note
 
 詳見 [rsloan](https://github.com/kancheng/rsloan) 
 
-# Oracle Virtual Box
+只建議用於測試用途 !!!
 
- - [ova file](https://drive.google.com/drive/folders/0B6XxBoBS2t6ndXNGYUdzVHJMSnM)
+# Oracle VirtualBox
+
+下載 [ova file](https://drive.google.com/drive/folders/0B6XxBoBS2t6ndXNGYUdzVHJMSnM)
+
+可以從 Oracle VirtualBox 中的喜好設定匯入，若想從實體機瀏覽器測試，可以在設定中額外加一張橋接介面卡。
 
 # OS
 Ubuntu 14.04.5 LTS trusty
@@ -56,12 +60,14 @@ localhost:3838
 Reference :
 http://withr.me/set-up-shiny-server-on-ubuntu-16.04/
 
+編輯 Renviron
 ```
 sudo vim /usr/lib/R/etc/Renviron
 ```
 
 # check the default library path in R:
 
+確認 R 的 套件來源
 ```
 sudo su - -c "R -e \".libPaths()\""
 ```
@@ -74,13 +80,17 @@ sudo su - -c "R -e \"install.packages('shiny', repos='http://cran.rstudio.com/')
 
 # R package install several dependencies or environment
 
+將一些常用的套件所需要的環境用好
 ```
 sudo apt-get install -y libcurl4-openssl-dev  libssl-dev libxml2-dev libcairo-dev
 
 sudo apt-get install -y default-jdk
 export LD_LIBRARY_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server/
 sudo R CMD javareconf 
+```
 
+修改套件來源的目錄權限
+```
 sudo chmod 777 /usr/local/lib/R/site-library
 ```
 
@@ -93,7 +103,7 @@ sudo apt-get install gdebi-core -y
 wget https://download2.rstudio.org/rstudio-server-1.0.136-amd64.deb
 sudo gdebi rstudio-server-1.0.136-amd64.deb
 ```
-
+瀏覽器
 ```
 localhost:8787
 ```
@@ -130,7 +140,7 @@ install_github('rCharts', 'ramnathv')
 ```
 sudo vim /usr/lib/R/etc/Rprofile.site
 ```
-
+可以直接將下面內容直接加入 Rprofile.site 即可
 ```
 # Haoye edit 
 .First = function(){
@@ -160,24 +170,30 @@ sudo vim /usr/lib/R/etc/Rprofile.site
 
 # LAMP
 
+MariaDB
 ```
 sudo apt-get install mariadb-server mariadb-client -y
+```
+會要你輸入 2 次密碼。
 
-passwd * 2
-
+Apache2
+```
 sudo apt-get install apache2 -y
-
+```
+PHP
+```
 sudo apt-get install php5 libapache2-mod-php5 -y
 
 sudo service apache2 restart
 ```
 
-# php test
+# 測試 php
 
 ```
 sudo vim /var/www/html/info.php
 ```
 
+info.php
 ```
 <?php
 phpinfo();
@@ -189,6 +205,7 @@ phpinfo();
 localhost/info.php
 ```
 
+PHP 設定
 ```
 sudo apt-cache search php5
 
@@ -203,15 +220,15 @@ sudo apt-get install php5-xcache
 sudo service apache2 restart
 ```
 
+phpmyadmin
 
 ```
 sudo apt-get install phpmyadmin -y
 ```
 
-apache2
+選 apache2、NO
 
-NO
-
+其餘細項設定
 ```
 sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 
@@ -226,15 +243,27 @@ sudo service apache2 restart
 
 
 # RMySQL 套件
+
 ```
 sudo apt-get update
 
 sudo apt-get install r-cran-rmysql -y
+```
 
+直接進入 R 執行
+```
 install.packages("RMySQL")
-
+```
+直接 command 執行
+```
 sudo su - -c "R -e \"install.packages('RMySQL', repos='http://cran.rstudio.com/')\""
+```
+觀察安裝後的訊息(後面會用)
+```
+/tmp/Rtmp*****R/downloaded_packages
+```
 
+```
 sudo apt-get install libmariadb-client-lgpl-dev -y
 
 ls /tmp/Rtmp*****R/downloaded_packages
@@ -242,12 +271,19 @@ ls /tmp/Rtmp*****R/downloaded_packages
 whereis mysql
 
 R CMD INSTALL --configure-args='--with-mysql-dir=/usr/lib/mysql' /tmp/Rtmp****R/downloaded_packages/RMySQL_0*****.tar.gz
-
-mysql -u root -p
 ```
 
 
+
 # Mariadb & RMySQL 的測試
+
+進入 Mariadb
+
+```
+mysql -u root -p
+```
+
+建立測試資料
 ```
 create database rmysql;
 grant all on rmysql.* to rmysql@'%' identified by 'rmysql';
@@ -266,6 +302,7 @@ SELECT * FROM t_user;
 
 # R test RMySQL
 
+匯入 RMySQL 看有沒有成功
 ```
 library(RMySQL)
 

@@ -1,8 +1,7 @@
 # rsloan-environment
 rsloan environment note
 
-詳見 [rsloan](https://github.com/kancheng/rsloan) 
-
+詳見 [rsloan](https://github.com/kancheng/rsloan) & [memo](http://kanchengzxdfgcv.blogspot.tw/2017/02/r-shiny-server.html)
 只建議用於測試用途 !!!
 
 # Oracle VirtualBox

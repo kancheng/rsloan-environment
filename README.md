@@ -1,6 +1,8 @@
 # rsloan-environment
 rsloan environment note
 
+詳見 [rsloan](https://github.com/kancheng/rsloan) 
+
 # Oracle Virtual Box
 ...
 

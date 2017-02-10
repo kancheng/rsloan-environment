@@ -4,22 +4,22 @@ rsloan environment note
 詳見 [rsloan](https://github.com/kancheng/rsloan) 
 
 # Oracle Virtual Box
-...
+
+ - [ova file](https://drive.google.com/drive/folders/0B6XxBoBS2t6ndXNGYUdzVHJMSnM)
 
 # OS
 Ubuntu 14.04.5 LTS trusty
 
+如果想要用 root 可以這麼做(不建議)
 ```
 sudo passwd root
 ```
-
+先裝常用工具
 ```
 sudo apt-get install vim git -y
 ```
 
-rws by R Work
-prj by git
-
+在家目錄建立 rws、prj 目錄
 ```
 mkdir ~/rws
 mkdir ~/prj
@@ -42,15 +42,18 @@ wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.3.0.403-amd
 sudo gdebi shiny-server-1.3.0.403-amd64.deb
 ```
 
+瀏覽器
 ```
 localhost:3838
 ```
 
-Edit R File by Shiny Server
-We can change /usr/lib/R/etc/Renviron to set it as the default one by commentting the line: 
-**R_LIBS_USER=${R_LIBS_USER-‘~/R/x86_64-pc-linux-gnu-library/3.2’} **
+# 解決 Shiny Server 套件來源的問題
 
-# Reference
+註解掉 etc/Renviron 檔案上的來源設定
+```
+**R_LIBS_USER=${R_LIBS_USER-‘~/R/x86_64-pc-linux-gnu-library/3.3’} **
+```
+Reference :
 http://withr.me/set-up-shiny-server-on-ubuntu-16.04/
 
 ```
@@ -94,13 +97,15 @@ sudo gdebi rstudio-server-1.0.136-amd64.deb
 ```
 localhost:8787
 ```
-# R Studio Desktop
+# RStudio Desktop
 https://www.rstudio.com/products/rstudio/download/
 
+看習慣決定要不要裝 RStudio Desktop
+
 # use R File Edit
+執行 rfile 目錄下的 pbpkgs.R 檔案。 
 
-run rfile pbpkgs.R by R
-
+pbpkgs.R
 ```
 local({r = getOption("repos")
 r["CRAN"] = "https://cloud.r-project.org/"
@@ -179,6 +184,11 @@ phpinfo();
 ?>
 ```
 
+瀏覽器
+```
+localhost/info.php
+```
+
 ```
 sudo apt-cache search php5
 
@@ -198,9 +208,9 @@ sudo service apache2 restart
 sudo apt-get install phpmyadmin -y
 ```
 
-# apache2
+apache2
 
-# NO
+NO
 
 ```
 sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
@@ -215,8 +225,7 @@ sudo service apache2 restart
 ```
 
 
-# RMySQL
-
+# RMySQL 套件
 ```
 sudo apt-get update
 
@@ -238,9 +247,7 @@ mysql -u root -p
 ```
 
 
-# Mariadb
-
-
+# Mariadb & RMySQL 的測試
 ```
 create database rmysql;
 grant all on rmysql.* to rmysql@'%' identified by 'rmysql';
@@ -273,7 +280,7 @@ users
 
 
 
-# 錯誤狀況
+# 錯誤狀況解決
 Failed to connect to database: Error: Can't connect to local MySQL server through socket '/tmp/mysql.sock'
 
 ```

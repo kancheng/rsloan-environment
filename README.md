@@ -6,9 +6,12 @@ rsloan environment note
 
 # Oracle VirtualBox
 
-下載 [ova file](https://drive.google.com/drive/folders/0B6XxBoBS2t6ndXNGYUdzVHJMSnM)
+下載 [ova File](https://drive.google.com/drive/folders/0B6XxBoBS2t6ndXNGYUdzVHJMSnM)
 
 可以從 Oracle VirtualBox 中的喜好設定匯入，若想從實體機瀏覽器測試，可以在設定中額外加一張橋接介面卡。
+
+![1](https://cloud.githubusercontent.com/assets/6993715/22852222/91fd38d8-f072-11e6-8ed4-e63057cda66e.png)
+![2](https://cloud.githubusercontent.com/assets/6993715/22852223/93789e0a-f072-11e6-9226-f4317701fb57.png)
 
 # OS
 Ubuntu 14.04.5 LTS trusty

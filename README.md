@@ -10,7 +10,10 @@ rsloan environment note
 
 可以從 Oracle VirtualBox 中的喜好設定匯入，若想從實體機瀏覽器測試，可以在設定中額外加一張橋接介面卡。
 
+喜好設定
 ![1](https://cloud.githubusercontent.com/assets/6993715/22852222/91fd38d8-f072-11e6-8ed4-e63057cda66e.png)
+
+橋接介面卡
 ![2](https://cloud.githubusercontent.com/assets/6993715/22852223/93789e0a-f072-11e6-9226-f4317701fb57.png)
 
 # OS

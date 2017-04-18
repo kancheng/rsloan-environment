@@ -4,7 +4,7 @@ rsloan environment note
 詳見 [rsloan](https://github.com/kancheng/rsloan) & [memo](http://kanchengzxdfgcv.blogspot.tw/2017/02/r-shiny-server.html)
 只建議用於測試用途 !!!
 
-# Oracle VirtualBox
+## Oracle VirtualBox
 
 下載 [ova File](https://drive.google.com/drive/folders/0B6XxBoBS2t6ndXNGYUdzVHJMSnM)
 
@@ -18,7 +18,7 @@ rsloan environment note
 
 ![2](https://cloud.githubusercontent.com/assets/6993715/22852223/93789e0a-f072-11e6-9226-f4317701fb57.png)
 
-# OS
+## OS
 Ubuntu 14.04.5 LTS trusty
 
 如果想要用 root 可以這麼做(不建議)
@@ -36,7 +36,7 @@ mkdir ~/rws
 mkdir ~/prj
 ```
 
-# R
+## R
 
 ```
 sudo sh -c 'echo "deb http://cran.csie.ntu.edu.tw/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list'
@@ -45,7 +45,7 @@ sudo apt-get update
 sudo apt-get install -y r-base libcurl4-openssl-dev libxml2-dev espeak
 ```
 
-# R Shiny Server
+## R Shiny Server
 
 ```
 sudo apt-get install -y gdebi-core
@@ -58,7 +58,7 @@ sudo gdebi shiny-server-1.3.0.403-amd64.deb
 localhost:3838
 ```
 
-# 解決 Shiny Server 套件來源的問題
+## 解決 Shiny Server 套件來源的問題
 
 註解掉 etc/Renviron 檔案上的來源設定
 ```
@@ -72,20 +72,20 @@ http://withr.me/set-up-shiny-server-on-ubuntu-16.04/
 sudo vim /usr/lib/R/etc/Renviron
 ```
 
-# check the default library path in R:
+## check the default library path in R:
 
 確認 R 的 套件來源
 ```
 sudo su - -c "R -e \".libPaths()\""
 ```
 
-# Install the Shiny R package
+## Install the Shiny R package
 
 ```
 sudo su - -c "R -e \"install.packages('shiny', repos='http://cran.rstudio.com/')\""
 ```
 
-# R package install several dependencies or environment
+## R package install several dependencies or environment
 
 將一些常用的套件所需要的環境用好
 ```
@@ -102,7 +102,7 @@ sudo chmod 777 /usr/local/lib/R/site-library
 ```
 
 
-# R Studio Server
+## R Studio Server
 https://www.rstudio.com/products/rstudio/download/
 
 ```
@@ -110,19 +110,22 @@ sudo apt-get install gdebi-core -y
 wget https://download2.rstudio.org/rstudio-server-1.0.136-amd64.deb
 sudo gdebi rstudio-server-1.0.136-amd64.deb
 ```
+P.S : 建議對一下 R Shiny 最新版本
+
 瀏覽器
 ```
 localhost:8787
 ```
-# RStudio Desktop
+## RStudio Desktop
 https://www.rstudio.com/products/rstudio/download/
 
 看習慣決定要不要裝 RStudio Desktop
 
-# use R File Edit
+## use R File Edit
 執行 rfile 目錄下的 pbpkgs.R 檔案。 
 
-pbpkgs.R
+### pbpkgs.R
+
 ```
 local({r = getOption("repos")
 r["CRAN"] = "https://cloud.r-project.org/"
@@ -142,7 +145,7 @@ require(devtools)
 install_github('rCharts', 'ramnathv')
 ```
 
-# Edit R Rprofile.site
+### Edit R Rprofile.site
 
 ```
 sudo vim /usr/lib/R/etc/Rprofile.site
@@ -175,32 +178,37 @@ sudo vim /usr/lib/R/etc/Rprofile.site
 ```
 
 
-# LAMP
+## LAMP
 
-MariaDB
+### MariaDB
+
 ```
 sudo apt-get install mariadb-server mariadb-client -y
 ```
 會要你輸入 2 次密碼。
 
-Apache2
+### Apache2
+
 ```
 sudo apt-get install apache2 -y
 ```
-PHP
+
+### PHP
+
 ```
 sudo apt-get install php5 libapache2-mod-php5 -y
 
 sudo service apache2 restart
 ```
 
-# 測試 php
+測試 php
 
 ```
 sudo vim /var/www/html/info.php
 ```
 
 info.php
+
 ```
 <?php
 phpinfo();
@@ -208,11 +216,13 @@ phpinfo();
 ```
 
 瀏覽器
+
 ```
 localhost/info.php
 ```
 
 PHP 設定
+
 ```
 sudo apt-cache search php5
 
@@ -227,7 +237,7 @@ sudo apt-get install php5-xcache
 sudo service apache2 restart
 ```
 
-phpmyadmin
+### phpmyadmin
 
 ```
 sudo apt-get install phpmyadmin -y
@@ -249,7 +259,7 @@ sudo service apache2 restart
 ```
 
 
-# RMySQL 套件
+## RMySQL 套件
 
 ```
 sudo apt-get update
@@ -258,13 +268,12 @@ sudo apt-get install r-cran-rmysql -y
 ```
 
 直接進入 R 執行
+
 ```
 install.packages("RMySQL")
 ```
-直接 command 執行
-```
-sudo su - -c "R -e \"install.packages('RMySQL', repos='http://cran.rstudio.com/')\""
-```
+P.S : R Console 的視窗請不要關掉，這樣才能進行後面在 Terminal 上的動作。
+
 觀察安裝後的訊息(後面會用)
 ```
 /tmp/Rtmp*****R/downloaded_packages
@@ -282,7 +291,7 @@ R CMD INSTALL --configure-args='--with-mysql-dir=/usr/lib/mysql' /tmp/Rtmp****R/
 
 
 
-# Mariadb & RMySQL 的測試
+## Mariadb & RMySQL 的測試
 
 進入 Mariadb
 
@@ -324,7 +333,8 @@ users
 
 
 
-# 錯誤狀況解決
+## phpmyadmin 錯誤狀況解決
+
 Failed to connect to database: Error: Can't connect to local MySQL server through socket '/tmp/mysql.sock'
 
 ```

@@ -6,8 +6,6 @@ rsloan environment note
 
 ## Oracle VirtualBox
 
-下載 [ova File](https://drive.google.com/drive/folders/0B6XxBoBS2t6ndXNGYUdzVHJMSnM)
-
 可以從 Oracle VirtualBox 中的喜好設定匯入，若想從實體機瀏覽器測試，可以在設定中額外加一張橋接介面卡。
 
 喜好設定
